@@ -17,15 +17,15 @@ public class Destroyer {
 	}
 
 	LinkedList<LinkedList<Block>> generateMap() {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			x = size / 2 - 1;
 			y = size / 2 - 1;
-			for (int z = 0; z < size * 6; z++) {
+			for (int z = 0; z < size * 3; z++) {
 				if (x >= size - 1 || x < 1 || y >= size - 1 || y < 1) {
 					x = size / 2 - 1;
 					y = size / 2 - 1;
 				}
-				map.get(x).set(y, new Block(x, y, 1));
+				map.get(x).set(y, new Block(1));
 				move = rand(0, 3);
 				switch (move) {
 				case 0: {
@@ -47,7 +47,6 @@ public class Destroyer {
 				}
 			}
 		}
-		cleanMap();
 		cleanMap();
 		cleanMap();
 		return (map);
@@ -83,7 +82,7 @@ public class Destroyer {
 						clean++;
 					}
 					if (clean <= 3) {
-						map.get(mx).set(my, new Block(mx, my, 1));
+						map.get(mx).set(my, new Block(1));
 					}
 				}
 			}

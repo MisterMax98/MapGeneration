@@ -31,7 +31,7 @@ public class MapEdit extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		map.drawM(canvas);
+		//map.drawM(canvas);
 		Paint p = new Paint();
 		p.setTextSize(30);
 		canvas.drawText(t1, 0, 30, p);

@@ -6,33 +6,27 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 public class MainActivity extends Activity implements OnTouchListener {
-	MapEdit me;
 	EditText ETid;
+	Game g;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		me = new MapEdit(this);
-		setContentView(R.layout.activity_main);
-		LinearLayout ll = (LinearLayout) findViewById(R.id.mll);
-		ll.addView(me);
-		me.setOnTouchListener(this);
-		ETid = (EditText) findViewById(R.id.etID);
+		g = new Game(this, new Map(70, this));
+		setContentView(g);
+		g.setOnTouchListener(this);
 	}
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		int id = Integer.parseInt(ETid.getText().toString());
-		me.onTouch(v, event, id);
+		g.onTouch(v, event, v.getId());
 		return true;
 	}
 
 	@Override
 	public void onBackPressed() {
-		me.map.saveMap();
 		super.onBackPressed();
 	}
 
