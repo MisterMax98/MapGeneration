@@ -86,7 +86,7 @@ public class Destroyer {
 						clean++;
 					}
 					if (clean <= 3) {
-						map.get(mx).set(my, new Block(1,c));
+						map.get(mx).set(my, new Block(1, c));
 					}
 				}
 			}

@@ -19,7 +19,8 @@ public class Block {
 		switch (id) {
 		case 1: {
 			this.col = Color.GREEN;
-			bm = BitmapFactory.decodeResource(c.getResources(), R.drawable.map_1);
+			bm = BitmapFactory.decodeResource(c.getResources(),
+					R.drawable.map_1);
 			move = true;
 			break;
 		}
@@ -40,7 +41,8 @@ public class Block {
 
 	void draw(Canvas c, int size, int x, int y) {
 
-		c.drawBitmap(Bitmap.createScaledBitmap(bm, size, size, true), x * size, y * size, p);
-		//c.drawRect(x * size, y * size, (x + 1) * size, (y + 1) * size, p);
+		c.drawBitmap(Bitmap.createScaledBitmap(bm, size, size, true), x * size,
+				y * size, p);
+		// c.drawRect(x * size, y * size, (x + 1) * size, (y + 1) * size, p);
 	}
 }
