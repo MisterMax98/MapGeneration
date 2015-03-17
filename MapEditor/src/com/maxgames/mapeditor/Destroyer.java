@@ -2,10 +2,13 @@ package com.maxgames.mapeditor;
 
 import java.util.LinkedList;
 
+import android.content.Context;
+
 public class Destroyer {
 
 	LinkedList<LinkedList<Block>> map;
 	int x, y, move, size;
+	Context c;
 
 	int rand(int min, int max) {
 		return (int) (Math.random() * (max - min + 1) + min);
@@ -14,6 +17,7 @@ public class Destroyer {
 	public Destroyer(Map m) {
 		this.map = m.map;
 		this.size = m.size;
+		this.c = m.c;
 	}
 
 	LinkedList<LinkedList<Block>> generateMap() {
@@ -25,7 +29,7 @@ public class Destroyer {
 					x = size / 2 - 1;
 					y = size / 2 - 1;
 				}
-				map.get(x).set(y, new Block(1));
+				map.get(x).set(y, new Block(1, c));
 				move = rand(0, 3);
 				switch (move) {
 				case 0: {
@@ -82,7 +86,7 @@ public class Destroyer {
 						clean++;
 					}
 					if (clean <= 3) {
-						map.get(mx).set(my, new Block(1));
+						map.get(mx).set(my, new Block(1,c));
 					}
 				}
 			}

@@ -17,6 +17,7 @@ public class Map implements Serializable {
 	DBManager dbm;
 	int size;
 	int blSize = 10;
+	Context c;
 
 	Map(int size, Context c) {
 		this.size = size;
@@ -27,13 +28,14 @@ public class Map implements Serializable {
 		for (int x = 0; x < size; x++) {
 			LinkedList<Block> mapx = new LinkedList<>();
 			for (int y = 0; y < size; y++) {
-				Block b = new Block(0);
+				Block b = new Block(0,c);
 				mapx.add(b);
 			}
 			map.add(mapx);
 		}
 		// }
 		map = (new Destroyer(this)).generateMap();
+		this.c = c;
 	}
 
 	int rand(int min, int max) {

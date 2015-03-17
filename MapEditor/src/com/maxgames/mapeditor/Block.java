@@ -1,27 +1,25 @@
 package com.maxgames.mapeditor;
 
-import java.io.Serializable;
-
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
-public class Block implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7013734098144142028L;
+public class Block {
 	int col;
 	int id;
 	boolean move;
+	Bitmap bm;
+	Paint p;
 
-	Block(int id) {
+	Block(int id, Context c) {
 		this.id = id;
 		switch (id) {
 		case 1: {
 			this.col = Color.GREEN;
+			bm = BitmapFactory.decodeResource(c.getResources(), R.drawable.map_1);
 			move = true;
 			break;
 		}
@@ -36,13 +34,13 @@ public class Block implements Serializable {
 			break;
 		}
 		}
+		p = new Paint();
+		p.setColor(this.col);
 	}
 
 	void draw(Canvas c, int size, int x, int y) {
-		Paint p;
-		p = new Paint();
-		p.setColor(this.col);
-		//Bitmap bm = BitmapFactory.decodeResource(, );
-		c.drawRect(x * size, y * size, (x + 1) * size, (y + 1) * size, p);
+
+		c.drawBitmap(Bitmap.createScaledBitmap(bm, size, size, true), x * size, y * size, p);
+		//c.drawRect(x * size, y * size, (x + 1) * size, (y + 1) * size, p);
 	}
 }
